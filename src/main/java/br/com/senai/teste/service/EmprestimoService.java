@@ -48,19 +48,11 @@ public class EmprestimoService {
 
     public List<Emprestimo> listar() {
         return emprestimoRepository.findAll();
-    }
+    };
 
-    @GetMapping ("/{id}")
-    public ResponseEntity<Emprestimo> buscarPorIdEntity(@PathVariable int id) {
-        Optional<Emprestimo> emprestimo = emprestimoService.buscarPorId(id);
-
-        if (emprestimo.isPresent()) {
-            return ResponseEntity.ok(emprestimo.get());
-        } 
-            return ResponseEntity.notFound().build();
-        
+    public Optional<Emprestimo> buscarPorId(Integer id) {
+        return emprestimoRepository.findById(id);
     }
-        
 
     
     
